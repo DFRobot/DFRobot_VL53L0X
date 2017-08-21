@@ -16,8 +16,8 @@ This library provides the VL53L0X laser rangefinder API function
     
 	void readData(unsigned char Reg, unsigned char Num);
 
-### 设置i2c设备地址
-   
+### Set I2C sub-device address
+
     void setDeviceAddress(uint8_t newAddr);
 	
 ### The function validates high-precision measurement
