@@ -1,5 +1,7 @@
 # VL53L0 Distance Ranging Sensor
+
 World smallest Time-of-Flight ranging and gesture detection sensor
+
 ![SVG1](https://raw.githubusercontent.com/DFRobot/binaryfiles/master/SEN0245/SEN0245svg1.png)
 ---------------------------------------------------------
 
@@ -20,10 +22,10 @@ This library provides the VL53L0X laser rangefinder API function
     /*!
      *  @brief Set operational mode to VL53L0X
      *
-     *  @param mode Work mode settings
+     *  @param  mode:  Work mode settings
      *      Single : Single mode
      *      Continuous : Back-to-back mode
-     *  @param precision：Set measurement precision
+     *  @param  precision: Set measurement precision
      *      High：High precision(0.25mm)
      *      Low: Low precision(1mm)
      */
