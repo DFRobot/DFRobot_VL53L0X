@@ -1,5 +1,9 @@
-= DFRobot_VL53L0X Library for Arduino =
+# VL53L0 Distance Ranging Sensor
+World smallest Time-of-Flight ranging and gesture detection sensor
+![SVG1](https://raw.githubusercontent.com/DFRobot/binaryfiles/master/SEN0245/SEN0245svg1.png)
 ---------------------------------------------------------
+
+# DFRobot_VL53L0X Library for Arduino
 
 This library provides the VL53L0X laser rangefinder API function
 
