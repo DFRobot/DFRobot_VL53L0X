@@ -8,12 +8,15 @@ World smallest Time-of-Flight ranging and gesture detection sensor
 This library provides the VL53L0X laser rangefinder API function
 
 ### Ready to start 
- 
-	void begin(uint8_t i2c_addr);
-	i2c_addr:Set I2C sub-device address
+
+```C++
+    void begin(uint8_t i2c_addr);
+    i2c_addr:Set I2C sub-device address
+```
 
 ### Set operational mode to VL53L0X
-   
+
+```C++
 	void setMode(uint8_t mode, uint8_t precision);
 	mode：Work mode settings
 	Single：Single mode  
@@ -21,40 +24,50 @@ This library provides the VL53L0X laser rangefinder API function
 	precision：Set measurement precision
 	High：High precision(0.25mm)
 	Low: Low precision(1mm)
+```
 	
 ### Start measuring distance
-   
+
+```C++
 	void start();
+```
 
 ### Stop measurement
-	
+
+```C++
 	void stop();
-	
+```
+
 ### get distance data
-	
+
+```C++
 	uint16_t getDistance();
-		
+```
+
 ### get ambient count
-		
+
+```C++
 	uint16_t getAmbientCount();
-		
+```
 ### get signal count
 
+```C++
 	uint16_t getSignalCount();
-		
+```
+
 ### get Status flag
-		
+```C++
 	uint8_t getStatus();
-	
+```
 
- * @file DFRobot_VL53L0X.ino
- * @brief DFRobot's Laser rangefinder library
- * @n This example provides the VL53L0X laser rangefinder API function
+## Compatibility
 
- * @copyright	[DFRobot](http://www.dfrobot.com), 2016
- * @copyright	GNU Lesser General Public License
- 
- * @author [LiXin]
- * @version  V1.0
- * @date  2017-8-21
- * @https://github.com/DFRobot/DFRobot_VL53L0X
+MCU                | Work Well | Work Wrong | Untested  | Remarks
+------------------ | :----------: | :----------: | :---------: | -----
+FireBeetle-ESP32  |      √       |             |            | 
+FireBeetle-ESP8266  |      √       |             |            | 
+FireBeetle-BLE4.1 |      √       |             |            | 
+
+## Credits
+
+Written by lixin(1035868977@qq.com), 2017. (Welcome to our [website](https://www.dfrobot.com/))
