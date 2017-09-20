@@ -10,54 +10,55 @@ This library provides the VL53L0X laser rangefinder API function
 ### Ready to start 
 
 ```C++
+    //i2c_addr:Set I2C sub-device address
     void begin(uint8_t i2c_addr);
-    i2c_addr:Set I2C sub-device address
 ```
 
 ### Set operational mode to VL53L0X
 
 ```C++
-	void setMode(uint8_t mode, uint8_t precision);
-	mode：Work mode settings
-	Single：Single mode  
-	Continuous：Back-to-back mode
-	precision：Set measurement precision
-	High：High precision(0.25mm)
-	Low: Low precision(1mm)
+    //mode：Work mode settings
+        //Single：Single mode  
+        //Continuous：Back-to-back mode
+    //precision：Set measurement precision
+        //High：High precision(0.25mm)
+        //Low: Low precision(1mm)
+    void setMode(uint8_t mode, uint8_t precision);
 ```
-	
+
 ### Start measuring distance
 
 ```C++
-	void start();
+    void start();
 ```
 
 ### Stop measurement
 
 ```C++
-	void stop();
+    void stop();
 ```
 
 ### get distance data
 
 ```C++
-	uint16_t getDistance();
+    uint16_t getDistance();
 ```
 
 ### get ambient count
 
 ```C++
-	uint16_t getAmbientCount();
+    uint16_t getAmbientCount();
 ```
 ### get signal count
 
 ```C++
-	uint16_t getSignalCount();
+    uint16_t getSignalCount();
 ```
 
 ### get Status flag
+
 ```C++
-	uint8_t getStatus();
+    uint8_t getStatus();
 ```
 
 ## Compatibility
