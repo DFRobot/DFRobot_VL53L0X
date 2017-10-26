@@ -55,8 +55,6 @@ float calcSpeed()
 void setup() {
   //initialize serial communication at 9600 bits per second:
   Serial.begin(115200);
-  //join i2c bus (address optional for master)
-  Wire.begin();
   //Set I2C sub-device address
   sensor.begin(0x50);
   //Set operational mode of laser rangefinder

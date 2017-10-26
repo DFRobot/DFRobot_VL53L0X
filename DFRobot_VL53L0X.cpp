@@ -25,6 +25,7 @@ DFRobotVL53L0X::~DFRobotVL53L0X()
 
 void DFRobotVL53L0X::begin(uint8_t i2c_addr=0x29){
   uint8_t val1;
+  Wire.begin();
   delay(1500);
   DetailedData.I2cDevAddr = I2C_DevAddr; 
   DataInit(); 
