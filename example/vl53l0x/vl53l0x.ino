@@ -55,9 +55,11 @@ float calcSpeed()
 void setup() {
   //initialize serial communication at 9600 bits per second:
   Serial.begin(115200);
+  //join i2c bus (address optional for master)
+  Wire.begin();
   //Set I2C sub-device address
   sensor.begin(0x50);
-  //Set operational mode of laser rangefinder
+  //Set to Back-to-back mode and high precision mode
   sensor.setMode(Continuous,High);
   //Laser rangefinder begins to work
   sensor.start();
@@ -73,5 +75,7 @@ void loop()
 	Serial.print("Speed: ");Serial.println(calcSpeed());
 	Serial.println("----- END TEST ----");
 	Serial.println("");
+	//The delay is added to demonstrate the effect, and if you do not add the delay,
+	//it will not affect the measurement accuracy
 	delay(1000);
 }
