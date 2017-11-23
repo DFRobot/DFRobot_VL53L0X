@@ -40,17 +40,6 @@
 
 DFRobotVL53L0X sensor;
 
-float calcSpeed()
-{
-	uint32_t timer1,timer2;
-	float inspeed1,inspeed2;
-	timer1 = millis();
-	inspeed1 = sensor.getDistance();
-	delay(50);
-	timer2 = millis();
-	inspeed2 = sensor.getDistance();
-	return (inspeed2-inspeed1)/(timer2-timer1);
-}
 
 void setup() {
   //initialize serial communication at 9600 bits per second:
@@ -67,15 +56,9 @@ void setup() {
 
 void loop() 
 {
-	Serial.println("----- START TEST ----");
-	Serial.print("ambient Count: ");Serial.println(sensor.getAmbientCount());
-	Serial.print("Signal Count: ");Serial.println(sensor.getSignalCount());
+	//Get the distance
 	Serial.print("Distance: ");Serial.println(sensor.getDistance());
-	Serial.print("Status: ");Serial.println(sensor.getStatus());
-	Serial.print("Speed: ");Serial.println(calcSpeed());
-	Serial.println("----- END TEST ----");
-	Serial.println("");
 	//The delay is added to demonstrate the effect, and if you do not add the delay,
 	//it will not affect the measurement accuracy
-	delay(1000);
+	delay(500);
 }
