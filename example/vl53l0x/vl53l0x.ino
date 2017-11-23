@@ -56,9 +56,9 @@ void setup() {
 
 void loop() 
 {
-	//Get the distance
-	Serial.print("Distance: ");Serial.println(sensor.getDistance());
-	//The delay is added to demonstrate the effect, and if you do not add the delay,
-	//it will not affect the measurement accuracy
-	delay(500);
+  //Get the distance
+  Serial.print("Distance: ");Serial.println(sensor.getDistance());
+  //The delay is added to demonstrate the effect, and if you do not add the delay,
+  //it will not affect the measurement accuracy
+  delay(500);
 }
