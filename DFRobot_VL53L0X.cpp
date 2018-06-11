@@ -54,7 +54,7 @@ void DFRobotVL53L0X::DataInit(){
 	writeByteData(0x91, 0x3c);
 	writeByteData(0x00, 0x01);
 	writeByteData(0xFF, 0x00);
-	writeByteData(0x80, 0x00);	
+	writeByteData(0x80, 0x00);
 }
 
 
@@ -74,9 +74,16 @@ void DFRobotVL53L0X::writeByteData(unsigned char Reg, unsigned char byte){
 }
 
 void DFRobotVL53L0X::readData(unsigned char Reg, unsigned char Num){
-	for(unsigned char i=0;i<Num;i++)
+
+	Wire.beginTransmission(DetailedData.I2cDevAddr); // transmit to device #8
+	Wire.write((uint8_t)Reg);              // sends one byte
+	Wire.endTransmission();    // stop transmitting
+    Wire.requestFrom((uint8_t)DetailedData.I2cDevAddr, (uint8_t)Num);
+
+	for(int i=0;i<Num;i++)
 	{
-		DetailedData.originalData[i] = readByteData(Reg++ );
+		DetailedData.originalData[i] = Wire.read();
+		delay(1);
 	}
 }
 
@@ -178,10 +185,12 @@ void DFRobotVL53L0X::stop(){
 	writeByteData(0xFF, 0x00);
 }
 
-
-
 float DFRobotVL53L0X::getDistance(){
 	readVL53L0X();
+	if(DetailedData.distance == 20)
+		DetailedData.distance = _distance;
+	else
+		_distance = DetailedData.distance;
 	if(DetailedData.precision == High)
 		return DetailedData.distance/4.0;
 	else

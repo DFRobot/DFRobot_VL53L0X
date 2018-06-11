@@ -72,6 +72,7 @@ class DFRobotVL53L0X
 		uint16_t getSignalCount();
 		uint8_t getStatus();	
 	private:
+		uint16_t _distance;
 		void writeByteData(unsigned char Reg, unsigned char byte);	
 		uint8_t readByteData(unsigned char Reg);
 		void writeData(unsigned char Reg ,unsigned char *buf, unsigned char Num);
