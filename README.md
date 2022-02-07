@@ -1,70 +1,91 @@
-# VL53L0 Distance Ranging Sensor
+# DFRobot_VL53L0X
 
-World smallest Time-of-Flight ranging and gesture detection sensor
+* [中文版](./README_CN.md)
 
-![SVG1](https://raw.githubusercontent.com/DFRobot/binaryfiles/master/SEN0245/SEN0245svg1.png)
----------------------------------------------------------
+World smallest Time-of-Flight ranging and gesture detection sensor.
 
-# DFRobot_VL53L0X Library for Arduino
+![产品效果图](./resources/images/SEN0245_f.png)![产品效果图](./resources/images/SEN0245_b.png)
 
-This library provides the VL53L0X laser rangefinder API function
+## Product Link（[https://www.dfrobot.com/product-1706.html](https://www.dfrobot.com/product-1706.html)）
+    SKU: SEN0245
+   
+## Table of Contents
 
-### Ready to start 
+* [Summary](#summary)
+* [Installation](#installation)
+* [Methods](#methods)
+* [Compatibility](#compatibility)
+* [History](#history)
+* [Credits](#credits)
 
+## Summary
+This library provides the VL53L0X laser rangefinder API function.
+
+## Installation
+
+To use this library, first download the library file, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
+
+## Methods
 ```C++
-    //i2c_addr:Set I2C sub-device address
-    void begin(uint8_t i2c_addr);
-```
-
-### Set operational mode to VL53L0X
-
-```C++
-    /*!
-     *  @brief Set operational mode to VL53L0X
-     *
-     *  @param  mode:  Work mode settings
-     *      Single : Single mode
-     *      Continuous : Back-to-back mode
-     *  @param  precision: Set measurement precision
-     *      High：High precision(0.25mm)
-     *      Low: Low precision(1mm)
-     */
-    void setMode(uint8_t mode, uint8_t precision);
-```
-
-### Start measuring distance
-
-```C++
-    void start();
-```
-
-### Stop measurement
-
-```C++
-    void stop();
-```
-
-### get distance data
-
-```C++
-    uint16_t getDistance();
-```
-
-### get ambient count
-
-```C++
-    uint16_t getAmbientCount();
-```
-### get signal count
-
-```C++
-    uint16_t getSignalCount();
-```
-
-### get Status flag
-
-```C++
-    uint8_t getStatus();
+  /**
+   * @fn DFRobot_VL53L0X
+   * @brief DFRobot_VL53L0X abstract class constructor.
+   */
+  DFRobot_VL53L0X();
+  ~DFRobot_VL53L0X();
+  /**
+   * @fn begin
+   * @brief Init sensor and set I2C sub-device address.
+   * @param addr 7 bits I2C address: 1~127
+   * @return NONE
+   */
+  void begin(uint8_t addr = VL53L0X_DEF_I2C_ADDR);	
+  /**
+   * @fn setMode
+   * @brief Set operational mode to VL53L0X sensor.
+   * @param mode Work mode settings
+   * @n     eSingle      Single mode
+   * @n     eContinuous  Back-to-back mode
+   * @param precision Set measurement precision
+   * @n     eHigh  High precision(0.25mm)
+   * @n     eLow   Low precision(1mm)
+   * @return NONE
+   */
+  void setMode(eModeState mode, ePrecisionState precision);
+  /**
+   * @fn start
+   * @brief Start measuring distance.
+   */
+  void start();
+  /**
+   * @fn stop
+   * @brief Stop measurement.
+   */
+  void stop();
+  /**
+   * @fn getDistance
+   * @brief This function returns the distance measured by the sensor in mm.
+   * @return The detailed distance
+   */
+  float getDistance();
+  /**
+   * @fn getAmbientCount
+   * @brief Get ambient count.
+   * @return Ambient count.
+   */
+  uint16_t getAmbientCount();
+  /**
+   * @fn getSignalCount
+   * @brief Get signal count.
+   * @return Signal count.
+   */
+  uint16_t getSignalCount();
+  /**
+   * @fn getStatus
+   * @brief Get Status flag.
+   * @return Status flag.
+   */
+  uint8_t getStatus();
 ```
 
 ## Compatibility
@@ -75,6 +96,10 @@ FireBeetle-ESP32  |      √       |             |            |
 FireBeetle-ESP8266  |      √       |             |            | 
 FireBeetle-BLE4.1 |      √       |             |            | 
 
+## History
+
+- 2017/08/21 - Version 1.0.0 released.
+
 ## Credits
 
-Written by lixin(1035868977@qq.com), 2017. (Welcome to our [website](https://www.dfrobot.com/))
+Written by lixin(xin.li@dfrobot.com), 2017. (Welcome to our [website](https://www.dfrobot.com/))
