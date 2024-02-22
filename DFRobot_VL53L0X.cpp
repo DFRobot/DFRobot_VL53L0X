@@ -34,19 +34,6 @@
 
 #define ESD_2V8
 
-struct sVL53L0X_DetailedData_t{
-	unsigned char i2cDevAddr;
-	uint8_t mode;
-	uint8_t precision;     /**< precision */
-	unsigned char originalData[16];
-	uint16_t ambientCount; /**< Environment quantity */
-	uint16_t signalCount;  /**< A semaphore */
-	uint16_t distance; 
-	uint8_t status;
-};
-struct sVL53L0X_DetailedData_t _detailedData;
-
-
 DFRobot_VL53L0X::DFRobot_VL53L0X()
 {}
 
@@ -54,12 +41,16 @@ DFRobot_VL53L0X::~DFRobot_VL53L0X()
 {}
 
 
-void DFRobot_VL53L0X::begin(uint8_t i2c_addr){
+void DFRobot_VL53L0X::begin(uint8_t i2c_addr,bool flag){
   uint8_t val1;
   delay(1500);
   _detailedData.i2cDevAddr = VL53L0X_DEF_I2C_ADDR; 
-  dataInit(); 
-  setDeviceAddress(i2c_addr);
+  dataInit();
+  if (flag){
+	setDeviceAddress(i2c_addr);
+  }else{
+	_detailedData.i2cDevAddr = i2c_addr;
+  }
   val1 = readByteData(VL53L0X_REG_IDENTIFICATION_REVISION_ID);
   Serial.println("");
   Serial.print("Revision ID: "); Serial.println(val1,HEX);

@@ -20,6 +20,17 @@
 
 class DFRobot_VL53L0X{
 public:
+  struct sVL53L0X_DetailedData_t{
+    unsigned char i2cDevAddr;
+    uint8_t mode;
+    uint8_t precision;     /**< precision */
+    unsigned char originalData[16];
+    uint16_t ambientCount; /**< Environment quantity */
+    uint16_t signalCount;  /**< A semaphore */
+    uint16_t distance; 
+    uint8_t status;
+  };
+
   typedef enum {eDISABLE = 0, eENABLE = !eDISABLE} eFunctionalState;
   typedef enum {eHigh = 0, eLow = !eHigh} ePrecisionState;
   typedef enum {eSingle = 0, eContinuous = !eSingle} eModeState;
@@ -35,7 +46,7 @@ public:
    * @param addr 7 bits I2C address: 1~127
    * @return NONE
    */
-  void begin(uint8_t addr = VL53L0X_DEF_I2C_ADDR);	
+  void begin(uint8_t addr = VL53L0X_DEF_I2C_ADDR,bool flag = false);	
   /**
    * @fn setMode
    * @brief Set operational mode to VL53L0X sensor.
@@ -82,13 +93,14 @@ public:
    * @return Status flag.
    */
   uint8_t getStatus();	
+  struct sVL53L0X_DetailedData_t _detailedData;
 private:
 	uint16_t _distance;
 	void writeByteData(unsigned char Reg, unsigned char byte);	
 	uint8_t readByteData(unsigned char Reg);
+	void setDeviceAddress(uint8_t newAddr);
 	void writeData(unsigned char Reg ,unsigned char *buf, unsigned char Num);
 	void readData(unsigned char Reg, unsigned char Num);
-	void setDeviceAddress(uint8_t newAddr);
 	void highPrecisionEnable(eFunctionalState NewState);
 	void dataInit();
 	void readVL53L0X();
