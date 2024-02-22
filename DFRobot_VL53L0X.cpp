@@ -41,12 +41,12 @@ DFRobot_VL53L0X::~DFRobot_VL53L0X()
 {}
 
 
-void DFRobot_VL53L0X::begin(uint8_t i2c_addr,bool flag){
+void DFRobot_VL53L0X::begin(uint8_t i2c_addr,bool changeDeviceAddress){
   uint8_t val1;
   delay(1500);
   _detailedData.i2cDevAddr = VL53L0X_DEF_I2C_ADDR; 
   dataInit();
-  if (flag){
+  if (changeDeviceAddress){
 	setDeviceAddress(i2c_addr);
   }else{
 	_detailedData.i2cDevAddr = i2c_addr;
