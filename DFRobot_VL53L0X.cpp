@@ -105,7 +105,7 @@ void DFRobot_VL53L0X::readData(unsigned char Reg, unsigned char Num){
 	for(int i=0;i<Num;i++)
 	{
 		_detailedData.originalData[i] = Wire.read();
-		delay(1);
+		//delay(1);
 	}
 }
 
